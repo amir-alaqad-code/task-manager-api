@@ -1,35 +1,59 @@
-# Task Manager API (Node.js + Express + PostgreSQL + Prisma)
+# Task Manager API  
+Node.js · Express · PostgreSQL · Prisma · Docker
 
-Simple but practical **Task Manager REST API** with:
-- JWT Auth (register/login)
-- Tasks CRUD (per-user)
-- Filtering, search, pagination, sorting
-- `/health` endpoint (includes DB check)
-- Docker + Docker Compose
-- GitHub Actions CI (lint + tests + docker build)
-- Jest + Supertest tests
+A clean and practical **Task Manager REST API** developed as part of an **Operating Systems practical assignment**.  
+The project focuses on backend structure, containerization using Docker, and a professional Git/GitHub workflow.
 
-## Endpoints
+---
 
-### Auth
-- `POST /api/auth/register`  (name, email, password)
-- `POST /api/auth/login`     (email, password)
+## ✨ Features
+- JWT Authentication (Register / Login)
+- Per-user Tasks CRUD operations
+- Filtering, searching, pagination, and sorting
+- Health check endpoint with database status
+- Docker & Docker Compose support
+- GitHub Actions CI (linting, testing, Docker build)
+- Automated tests using Jest & Supertest
 
-### Tasks (Bearer token required)
+---
+
+## 📌 API Endpoints
+
+### Authentication
+- `POST /api/auth/register`  
+  Create a new user account  
+  Body: `name, email, password`
+
+- `POST /api/auth/login`  
+  Authenticate user and return JWT token  
+  Body: `email, password`
+
+---
+
+### Tasks (Authorization required)
+All task endpoints require a valid **Bearer Token**.
+
 - `POST /api/tasks`
-- `GET /api/tasks` with query:
-  - `status=todo|doing|done`
-  - `priority=low|medium|high`
+- `GET /api/tasks`  
+  Supports query parameters:
+  - `status=todo | doing | done`
+  - `priority=low | medium | high`
   - `q=keyword`
-  - `page=1..` `limit=10..`
-  - `sort=createdAt|dueDate`
-  - `order=asc|desc`
+  - `page=1..`
+  - `limit=10..`
+  - `sort=createdAt | dueDate`
+  - `order=asc | desc`
 - `GET /api/tasks/:id`
 - `PUT /api/tasks/:id`
 - `DELETE /api/tasks/:id`
 
-### Health
-- `GET /health` → `{ "status": "ok", "db": "ok|down" }`
+---
+
+### Health Check
+- `GET /health`  
+Returns API and database status:
+json
+{ "status": "ok", "db": "ok" }
 
 ---
 
@@ -74,7 +98,7 @@ API: `http://localhost:3000`
 docker compose down -v
 ```
 
----
+
 
 ## Quick cURL examples
 
