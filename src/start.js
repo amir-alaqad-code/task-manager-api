@@ -4,8 +4,7 @@ const { execSync } = require("child_process");
 try {
   execSync("npx prisma migrate deploy", { stdio: "inherit", env: process.env });
 } catch (e) {
-  // eslint-disable-next-line no-console
-  console.error("Migration step failed:", e);
+  console.error("Migration step failed:", e?.message || e);
   process.exit(1);
 }
 

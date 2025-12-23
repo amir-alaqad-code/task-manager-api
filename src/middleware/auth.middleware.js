@@ -12,7 +12,7 @@ function authRequired(req, res, next) {
     const decoded = verifyToken(token);
     req.user = decoded; // { userId }
     return next();
-  } catch (e) {
+  } catch {
     return res.status(401).json({ message: "Invalid token" });
   }
 }
