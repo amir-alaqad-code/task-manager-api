@@ -5,7 +5,7 @@ async function health(req, res) {
   try {
     await prisma.$queryRaw`SELECT 1`;
     db = "ok";
-  } catch (e) {
+  } catch {
     db = "down";
   }
 
